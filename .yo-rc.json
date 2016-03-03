@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "sourcereactshowcase",
+    "style": "less",
+    "postcss": true
+  }
+}
