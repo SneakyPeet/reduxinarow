@@ -1,15 +1,16 @@
 'use strict';
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 require('styles/issues/Issue.less');
 
 class IssueComponent extends React.Component {
   render() {
     return (
-      <div className="issue-component">
-        Please edit src/components/issues//IssueComponent.js to update this component!
-      </div>
+      <tr>
+        <td className="mdl-data-table__cell--non-numeric">{this.props.title}</td>
+        <td className="mdl-data-table__cell--non-numeric">{this.props.publisher}</td>
+      </tr>
     );
   }
 }
@@ -17,7 +18,11 @@ class IssueComponent extends React.Component {
 IssueComponent.displayName = 'IssuesIssueComponent';
 
 // Uncomment properties you need
-// IssueComponent.propTypes = {};
+IssueComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired
+  //rowToggled: PropTypes.func.isRequired
+};
 // IssueComponent.defaultProps = {};
 
 export default IssueComponent;

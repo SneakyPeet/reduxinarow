@@ -8,5 +8,8 @@
  */
 import { combineReducers } from 'redux';
 /* Populated by react-webpack-redux:reducer */
-const reducers = { routing: require('../reducers/routing.js') };
+const reducers = {
+  routing: require('../reducers/routing.js'),
+  issues: require('../reducers/issues.js')
+};
 module.exports = combineReducers(reducers);
