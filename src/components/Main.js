@@ -9,6 +9,7 @@ class AppComponent extends React.Component {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <Navigation />
+        {this.props.children}
       </div>
     );
   }

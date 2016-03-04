@@ -15,7 +15,7 @@ import Main from '../components/Main';
 class App extends Component {
   render() {
     const {actions, routing} = this.props;
-    return <Main actions={actions} routing={routing}/>;
+    return <Main actions={actions} routing={routing}>{this.props.children}</Main>;
   }
 }
 /* Populated by react-webpack-redux:reducer
