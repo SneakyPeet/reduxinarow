@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './stores';
 import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
-import IssuePage from './components/issues/IssuePageComponent';
+import IssuePage from './containers/issues/IssuePage';
 import routes from './containers/navigation/routes';
 
 const store = configureStore();

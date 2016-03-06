@@ -8,7 +8,7 @@ require('styles/navigation/NavBar.less');
 class NavBarComponent extends React.Component {
   render() {
     return (
-      <header className="mdl-layout__header">
+      <header className="mdl-layout__header" key="Navbar">
         <div className="mdl-layout__header-row">
           <span className="mdl-layout-title">React Showcase</span>
           <div className="mdl-layout-spacer"></div>

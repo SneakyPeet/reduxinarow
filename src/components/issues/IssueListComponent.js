@@ -7,8 +7,9 @@ require('styles/issues/IssueList.less');
 
 class IssueListComponent extends React.Component {
   render() {
+    const { issues, isFetching } = this.props;
     return (
-      <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+      <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
             <th className="mdl-data-table__cell--non-numeric">Title</th>
@@ -16,7 +17,8 @@ class IssueListComponent extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.issues.map((issue) => <IssueComponent {...issue} key={issue.title}/>)}
+          {isFetching && <tr><td>Fetching</td></tr>}
+          {issues.map((issue, index) => <IssueComponent {...issue} key={index + issue.title}/>)}
         </tbody>
       </table>
     );
@@ -27,7 +29,8 @@ IssueListComponent.displayName = 'IssuesIssueListComponent';
 
 // Uncomment properties you need
 IssueListComponent.propTypes = {
-  issues: PropTypes.array.isRequired
+  issues: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 // IssueListComponent.defaultProps = {};
 

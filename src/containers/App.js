@@ -11,30 +11,14 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Main from '../components/Main';
-/* Populated by react-webpack-redux:reducer */
-class App extends Component {
-  render() {
-    const {actions, routing, issues} = this.props;
-    return <Main actions={actions} routing={routing} issues={issues}>{this.props.children}</Main>;
-  }
-}
 /* Populated by react-webpack-redux:reducer
  *
  * HINT: if you adjust the initial type of your reducer, you will also have to
  *       adjust it here.
  */
-App.propTypes = {
-  actions: PropTypes.object.isRequired,
-  routing: PropTypes.object.isRequired,
-  issues: PropTypes.array.isRequired
-};
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
-  const props = {
-    routing: state.routing,
-    issues: state.issues
-  };
-  return props;
+  return state;
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
@@ -42,4 +26,4 @@ function mapDispatchToProps(dispatch) {
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
