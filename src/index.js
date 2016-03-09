@@ -6,7 +6,8 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './stores';
 import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
-import IssuePage from './containers/issues/IssuePage';
+import IssuesPage from './containers/issues/IssuesPage';
+import SuppliersPage from './containers/suppliers/SuppliersPage';
 import SupplierPage from './containers/suppliers/SupplierPage';
 import { routes } from './constants';
 
@@ -19,8 +20,11 @@ render(
       <Route path="/" component={App}>
         <IndexRedirect to={routes.index} />
         <Route path={routes.index} component={AboutPage}/>
-        <Route path={routes.issues} component={IssuePage}/>
-        <Route path={routes.suppliers} component={SupplierPage}/>
+        <Route path={routes.issues} component={IssuesPage}/>
+        <Route path={routes.suppliers} component={SuppliersPage}>
+
+        </Route>
+        <Route path="supplier/:id" component={SupplierPage} />
       </Route>
     </Router>
   </Provider>,

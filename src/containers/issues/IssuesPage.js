@@ -30,9 +30,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const IssuePage = connect(
+const IssuesPage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(EntityListPageComponent)
 
-export default IssuePage
+export default IssuesPage

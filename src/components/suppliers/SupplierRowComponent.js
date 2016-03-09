@@ -8,7 +8,7 @@ require('styles/suppliers/SupplierRow.less');
 
 class SupplierRowComponent extends React.Component {
   render() {
-    const route = routes.suppliers + '/' + this.props.id;
+    const route = '/supplier/' + this.props.id;
     return (
       <tr>
         <td className="mdl-data-table__cell--non-numeric"><LinkComponent to={route}>{this.props.name}</LinkComponent></td>
