@@ -1,17 +1,33 @@
 import { connect } from 'react-redux'
 import { fetchSuppliers } from '../../actions/suppliers'
-import SuppliersPageComponent from '../../components/suppliers/SuppliersPageComponent'
+import { classes } from '../../constants'
+import EntityListPageComponent from '../../components/entityListPage/EntityListPageComponent'
+import SupplierRowComponent from '../../components/suppliers/SupplierRowComponent'
+
+const headers = [{
+    text: 'Name',
+    class: classes.nonNumericCell
+  }, {
+    text: 'City',
+    class: classes.nonNumericCell
+  }, {
+    text: 'Reference Number',
+    class: classes.nonNumericCell
+  }
+]
 
 const mapStateToProps = (state) => {
   return {
     isFetching: state.suppliers.isFetching,
-    issues: state.suppliers.data
+    data: state.suppliers.data,
+    entityComponent: SupplierRowComponent,
+    headers
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSuppliers: () => {
+    fetch: () => {
       dispatch(fetchSuppliers());
     }
   }
@@ -20,6 +36,6 @@ const mapDispatchToProps = (dispatch) => {
 const SupplierPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SuppliersPageComponent)
+)(EntityListPageComponent)
 
 export default SupplierPage

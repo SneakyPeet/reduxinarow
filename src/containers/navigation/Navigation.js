@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import NavBarComponent from '../../components/navigation/NavBarComponent'
-import routes from './routes'
+import { routes}  from '../../constants'
 
 const makeNavLink = (to, text) => {
   return {

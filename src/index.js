@@ -8,7 +8,7 @@ import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
 import IssuePage from './containers/issues/IssuePage';
 import SupplierPage from './containers/suppliers/SupplierPage';
-import routes from './containers/navigation/routes';
+import { routes } from './constants';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

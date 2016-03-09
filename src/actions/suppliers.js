@@ -12,7 +12,7 @@ function requestSuppliers() {
 function receiveSuppliers(json) {
   return {
     type: RECEIVE_SUPPLIERS,
-    issues: json
+    suppliers: json
   }
 }
 

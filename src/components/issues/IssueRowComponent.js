@@ -2,7 +2,7 @@
 
 import React, {PropTypes} from 'react';
 import LinkComponent from '../navigation/LinkComponent';
-import routes from '../../containers/navigation/routes';
+import { routes } from '../../constants';
 
 require('styles/issues/IssueRow.less');
 
