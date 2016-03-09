@@ -1,19 +1,16 @@
 import { connect } from 'react-redux'
-import { fetchSuppliers } from '../../actions/suppliers'
-import { classes } from '../../constants'
 import SupplierPageComponent from '../../components/suppliers/SupplierPageComponent'
 
 
-const mapStateToProps = (state) => {
-  console.log(state);
+const mapStateToProps = (state, ownProps) => {
+  const id = parseInt(ownProps.params.id);
   return {
-
+    supplier: state.suppliers.data.find((item) => { return item.id === id})
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
+const mapDispatchToProps = () => {
+  return {}
 }
 
 const SupplierPage = connect(

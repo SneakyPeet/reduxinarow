@@ -21,10 +21,9 @@ render(
         <IndexRedirect to={routes.index} />
         <Route path={routes.index} component={AboutPage}/>
         <Route path={routes.issues} component={IssuesPage}/>
-        <Route path={routes.suppliers} component={SuppliersPage}>
-
-        </Route>
-        <Route path="supplier/:id" component={SupplierPage} />
+        <Route path={routes.suppliers} component={SuppliersPage}/>
+        <Route path={routes.suppliers + '/:id'} component={SupplierPage} />
+        <Route path={routes.suppliers_update + ':id'} component={SupplierPage} />
       </Route>
     </Router>
   </Provider>,

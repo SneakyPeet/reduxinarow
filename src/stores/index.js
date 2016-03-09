@@ -2,12 +2,22 @@ const redux = require('redux');
 const reducers = require('../reducers');
 const thunkMiddleware  = require('redux-thunk');
 
+const logger = store => next => action => {
+  console.group(action.type)
+  console.info('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  console.groupEnd(action.type)
+  return result
+}
+
 module.exports = function(initialState) {
   const store = redux.createStore(
     reducers,
     initialState,
     redux.applyMiddleware(
-        thunkMiddleware
+        thunkMiddleware,
+        logger
       )
   );
 
