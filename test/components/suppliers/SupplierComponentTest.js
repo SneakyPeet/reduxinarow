@@ -7,16 +7,16 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import IssuePageComponent from 'components/issues/IssuePageComponent.js';
+import SupplierComponent from 'components/suppliers/SupplierComponent.js';
 
-describe('IssuePageComponent', () => {
+describe('SupplierComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(IssuePageComponent);
+    component = createComponent(SupplierComponent);
   });
 
   it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('issuepage-component');
+    expect(component.props.className).to.equal('supplier-component');
   });
 });

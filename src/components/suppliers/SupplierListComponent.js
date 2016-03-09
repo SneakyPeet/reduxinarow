@@ -1,13 +1,13 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import IssueComponent from './IssueComponent';
+import SupplierComponent from './SupplierComponent';
 
-require('styles/issues/IssueList.less');
+require('styles/suppliers/SupplierList.less');
 
-class IssueListComponent extends React.Component {
+class SupplierListComponent extends React.Component {
   render() {
-    const { issues, isFetching } = this.props;
+    const { suppliers, isFetching } = this.props;
     return (
       <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
@@ -25,13 +25,10 @@ class IssueListComponent extends React.Component {
   }
 }
 
-IssueListComponent.displayName = 'IssuesIssueListComponent';
+SupplierListComponent.displayName = 'SuppliersSupplierListComponent';
 
 // Uncomment properties you need
-IssueListComponent.propTypes = {
-  issues: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired
-};
-// IssueListComponent.defaultProps = {};
+// SupplierListComponent.propTypes = {};
+// SupplierListComponent.defaultProps = {};
 
-export default IssueListComponent;
+export default SupplierListComponent;

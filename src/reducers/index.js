@@ -10,6 +10,7 @@ import { combineReducers } from 'redux';
 /* Populated by react-webpack-redux:reducer */
 const reducers = {
   routing: require('../reducers/routing.js'),
-  issues: require('../reducers/issues.js')
+  issues: require('../reducers/issues.js'),
+  suppliers: require('../reducers/suppliers.js')
 };
 module.exports = combineReducers(reducers);

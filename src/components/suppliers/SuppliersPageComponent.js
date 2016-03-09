@@ -1,18 +1,17 @@
 'use strict';
-
 import React, { PropTypes } from 'react';
-import IssueList from './IssueListComponent';
+import SupplierList from './SupplierListComponent';
 import LoadingBar from '../LoadingBarComponent';
 
-require('styles/issues/IssuePage.less');
+require('styles/suppliers/SuppliersPage.less');``
 
-class IssuePageComponent extends React.Component {
+class SuppliersPageComponent extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.fetchIssues();
+    this.props.fetchSuppliers();
   }
 
   render() {
@@ -22,7 +21,7 @@ class IssuePageComponent extends React.Component {
         <div className="page-content">
           <div className="container-large">
             {isFetching && <LoadingBar/>}
-            {!isFetching && <IssueList {...this.props}/> }
+            {!isFetching && <SupplierList {...this.props}/> }
           </div>
         </div>
       </main>
@@ -30,14 +29,13 @@ class IssuePageComponent extends React.Component {
   }
 }
 
-IssuePageComponent.displayName = 'IssuePageComponent';
+SuppliersPageComponent.displayName = 'SuppliersSuppliersPageComponent';
 
 // Uncomment properties you need
-IssuePageComponent.propTypes = {
-  fetchIssues : PropTypes.func.isRequired,
-  issues: PropTypes.array.isRequired,
+SuppliersPageComponent.propTypes = {
+  fetchSuppliers : PropTypes.func.isRequired,
+  suppliers: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired
 };
-// IssuePageComponent.defaultProps = {};
 
-export default IssuePageComponent;
+export default SuppliersPageComponent;

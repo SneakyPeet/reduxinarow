@@ -4,9 +4,9 @@ import React, {PropTypes} from 'react';
 import LinkComponent from '../navigation/LinkComponent';
 import routes from '../../containers/navigation/routes';
 
-require('styles/issues/Issue.less');
+require('styles/issues/IssueRow.less');
 
-class IssueComponent extends React.Component {
+class IssueRowComponent extends React.Component {
   render() {
     const route = routes.issues + '/' + this.props.id;
     return (
@@ -18,15 +18,15 @@ class IssueComponent extends React.Component {
   }
 }
 
-IssueComponent.displayName = 'IssuesIssueComponent';
+IssueRowComponent.displayName = 'IssueRowComponent';
 
 // Uncomment properties you need
-IssueComponent.propTypes = {
-  id: PropTypes.string.isRequired,
+IssueRowComponent.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   publisher: PropTypes.string.isRequired
   //rowToggled: PropTypes.func.isRequired
 };
 // IssueComponent.defaultProps = {};
 
-export default IssueComponent;
+export default IssueRowComponent;

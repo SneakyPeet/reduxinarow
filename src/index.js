@@ -7,6 +7,7 @@ import configureStore from './stores';
 import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
 import IssuePage from './containers/issues/IssuePage';
+import SupplierPage from './containers/suppliers/SupplierPage';
 import routes from './containers/navigation/routes';
 
 const store = configureStore();
@@ -19,6 +20,7 @@ render(
         <IndexRedirect to={routes.index} />
         <Route path={routes.index} component={AboutPage}/>
         <Route path={routes.issues} component={IssuePage}/>
+        <Route path={routes.suppliers} component={SupplierPage}/>
       </Route>
     </Router>
   </Provider>,
