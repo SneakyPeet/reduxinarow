@@ -12,6 +12,7 @@ const reducers = {
   routing: require('./routing.js'),
   error: require('./error.js'),
   issues: require('./issues.js'),
-  suppliers: require('./suppliers.js')
+  suppliers: require('./suppliers.js'),
+  isNetworking: require('./network.js')
 };
 module.exports = combineReducers(reducers);

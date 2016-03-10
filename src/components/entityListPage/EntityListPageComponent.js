@@ -3,7 +3,6 @@
 import React, { PropTypes } from 'react';
 import EntityList from './EntityListComponent';
 import SearchComponent from './SearchComponent';
-import LoadingBar from '../LoadingBarComponent';
 
 require('styles/entityListPage/EntityListPage.less');
 
@@ -23,8 +22,7 @@ class EntityListPageComponent extends React.Component {
         <div className="page-content">
           <div className="container-large">
             <SearchComponent />
-            {isFetching && <LoadingBar/>}
-            {!isFetching && <EntityList {...this.props}/> }
+            {<EntityList {...this.props}/> }
           </div>
         </div>
       </main>

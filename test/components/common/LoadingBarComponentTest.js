@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import LoadingBarComponent from 'components//LoadingBarComponent.js';
+import LoadingBarComponent from 'components/common/LoadingBarComponent.js';
 
 describe('LoadingBarComponent', () => {
   let component;

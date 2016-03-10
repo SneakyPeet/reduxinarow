@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux'
 
-require('styles/error/ErrorBar.less');
+require('styles/common/ErrorBar.less');
 
 class ErrorBarComponent extends React.Component {
   render() {
