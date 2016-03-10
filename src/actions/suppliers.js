@@ -1,7 +1,10 @@
-import { getApi } from './../sources';
 import { networkError } from './common';
 import { routes } from '../constants';
 import { push } from 'react-router-redux'
+import config from 'config';
+import request from 'axios';
+
+const api = config.apiUrl + 'suppliers';
 
 export const REQUEST_SUPPLIERS = 'REQUEST_SUPPLIERS';
 export const RECEIVE_SUPPLIERS = 'RECEIVE_SUPPLIERS';
@@ -44,29 +47,17 @@ export function viewSupplier(id) {
 export function fetchSuppliers() {
   return dispatch => {
     dispatch(requestSuppliers());
-    getApi((err, client) => {
-      if(err) {
-        dispatch(networkError(err));
-        return;
-      }
-      return client.Suppliers.Suppliers_Get()
-        .then(req => dispatch(receiveSuppliers(JSON.parse(req.data))))
-        .catch(err => dispatch(networkError(err)));
-    });
+    return request.get(api)
+      .then(req => dispatch(receiveSuppliers(req.data)))
+      .catch(err => dispatch(networkError(err)));
   };
 }
 
 export function fetchSupplier(id) {
   return dispatch => {
     dispatch(requestSupplier(id));
-    getApi((err, client) => {
-      if(err) {
-        dispatch(networkError(err));
-        return;
-      }
-      return client.Suppliers.Suppliers_Get_0({issueId: 0, supplierId: id})
-        .then(req => dispatch(receiveSupplier(JSON.parse(req.data))))
-        .catch(err => dispatch(networkError(err)));
-    });
+    return request.get(api, {params: { id }})
+      .then(req => dispatch(receiveSupplier(req.data)))
+      .catch(err => dispatch(networkError(err)));
   };
 }
