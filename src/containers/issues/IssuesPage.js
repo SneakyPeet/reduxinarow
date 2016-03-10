@@ -3,7 +3,6 @@ import { fetchIssues } from '../../actions/issues'
 import { classes } from '../../constants'
 import EntityListPageComponent from '../../components/entityListPage/EntityListPageComponent'
 import IssueRowComponent from '../../components/issues/IssueRowComponent'
-import { routes } from '../../constants';
 
 const headers = [{
     text: 'Title',
@@ -27,9 +26,8 @@ const mapDispatchToProps = (dispatch) => {
     fetch: () => {
       dispatch(fetchIssues());
     },
-    selectedEntity: (id) => {
-      const route = routes.issues + '/' + id;
-      console.log(route);
+    selectedEntity: () => {
+      //const route = routes.issues + '/' + id;
     }
   }
 }

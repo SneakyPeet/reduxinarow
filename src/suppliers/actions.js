@@ -45,9 +45,9 @@ export function viewSupplier(id) {
   }
 }
 
-export function editSupplier() {
-  return {
-    type: EDIT_SUPPLIER
+export function editSupplier(id) {
+  return dispatch => {
+    dispatch(push(routes.suppliers + '/' + id + '/update'));
   }
 }
 

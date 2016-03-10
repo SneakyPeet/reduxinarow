@@ -1,14 +1,12 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import { routes } from '../../../constants';
 
 require('./styles/SupplierRow.less');
 
 class SupplierRow extends React.Component {
   render() {
     const { name, city, referenceNumber, id} = this.props;
-    const route = routes.suppliers + '/' + id;
     const onselect = e => {
       e.preventDefault()
       this.props.select(id);

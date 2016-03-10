@@ -16,7 +16,6 @@ class EntityListPageComponent extends React.Component {
   }
 
   render() {
-    const { isFetching } = this.props;
     return (
       <main className="mdl-layout__content">
         <div className="page-content">

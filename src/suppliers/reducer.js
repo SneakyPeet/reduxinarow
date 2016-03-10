@@ -1,17 +1,11 @@
 import { RECEIVE_SUPPLIERS, REQUEST_SUPPLIERS, RECEIVE_SUPPLIER, REQUEST_SUPPLIER, EDIT_SUPPLIER } from './actions';
 const initialState = {
   data: [],
-  supplier: null,
-  isEditing: false
+  supplier: null
 };
 
 module.exports = function(state = initialState, action) {
   switch(action.type) {
-
-    case EDIT_SUPPLIER:
-      return Object.assign({}, state, {
-        isEditing: true
-      })
 
     case REQUEST_SUPPLIER:
       return Object.assign({}, state, {
@@ -29,6 +23,7 @@ module.exports = function(state = initialState, action) {
         data: action.suppliers
       })
 
+    case EDIT_SUPPLIER:
     case REQUEST_SUPPLIERS:
     default: {
       return state;

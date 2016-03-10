@@ -1,5 +1,4 @@
 const routeBase = '/react/'
-const suppliers = 'suppliers'
 
 module.exports.routes = {
   index: routeBase,

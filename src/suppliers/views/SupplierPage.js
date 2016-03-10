@@ -1,14 +1,13 @@
 import { connect } from 'react-redux'
 import { fetchSupplier, editSupplier } from '../actions'
-import SupplierPageComponent from './components/SupplierPageLayout'
+import SupplierPageLayout from './components/SupplierPageLayout'
 
 
 const mapStateToProps = (state, ownProps) => {
   const id = parseInt(ownProps.params.id);
   if (state.suppliers.supplier) {
     return {
-      supplier: state.suppliers.supplier,
-      isEditing: state.suppliers.isEditing
+      supplier: state.suppliers.supplier
     }
   }
 
@@ -24,7 +23,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(fetchSupplier(id));
     },
     edit: () => {
-      dispatch(editSupplier());
+      dispatch(editSupplier(id));
+    },
+    update: () => {
+      //dispatch(editSupplier());
     }
   }
 }
@@ -32,6 +34,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const SupplierPage = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SupplierPageComponent)
+)(SupplierPageLayout)
 
 export default SupplierPage
