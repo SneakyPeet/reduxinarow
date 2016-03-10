@@ -7,8 +7,7 @@ import { configureStore } from './stores';
 import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
 import IssuesPage from './containers/issues/IssuesPage';
-import SuppliersPage from './containers/suppliers/SuppliersPage';
-import SupplierPage from './containers/suppliers/SupplierPage';
+import suppliers from './suppliers';
 import { routes } from './constants';
 
 const store = configureStore(browserHistory);
@@ -21,9 +20,7 @@ render(
         <IndexRedirect to={routes.index} />
         <Route path={routes.index} component={AboutPage}/>
         <Route path={routes.issues} component={IssuesPage}/>
-        <Route path={routes.suppliers} component={SuppliersPage}/>
-        <Route path={routes.suppliers + '/:id'} component={SupplierPage} />
-        <Route path={routes.suppliers_update + ':id'} component={SupplierPage} />
+        {suppliers.configureRoutes()}
       </Route>
     </Router>
   </Provider>,

@@ -4,8 +4,7 @@ const suppliers = 'suppliers'
 module.exports.routes = {
   index: routeBase,
   vouchers: routeBase + 'vouchers',
-  suppliers: routeBase + suppliers,
-  suppliers_update: routeBase + suppliers + '/update/',
+  suppliers: routeBase + 'suppliers',
   issues: routeBase + 'issues'
 };
 

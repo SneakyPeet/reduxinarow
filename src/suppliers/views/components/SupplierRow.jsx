@@ -1,11 +1,11 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import { routes } from '../../constants';
+import { routes } from '../../../constants';
 
-require('styles/suppliers/SupplierRow.less');
+require('./styles/SupplierRow.less');
 
-class SupplierRowComponent extends React.Component {
+class SupplierRow extends React.Component {
   render() {
     const { name, city, referenceNumber, id} = this.props;
     const route = routes.suppliers + '/' + id;
@@ -24,10 +24,10 @@ class SupplierRowComponent extends React.Component {
   }
 }
 
-SupplierRowComponent.displayName = 'SupplierRowComponent';
+SupplierRow.displayName = 'SupplierRow';
 
 // Uncomment properties you need
-SupplierRowComponent.propTypes = {
+SupplierRow.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
@@ -36,4 +36,4 @@ SupplierRowComponent.propTypes = {
 };
 
 
-export default SupplierRowComponent;
+export default SupplierRow;

@@ -1,6 +1,6 @@
 import { NETWORK_ERROR } from './../actions/common';
 import { REQUEST_ISSUES, RECEIVE_ISSUES } from './../actions/issues';
-import { REQUEST_SUPPLIER, RECEIVE_SUPPLIER, REQUEST_SUPPLIERS, RECEIVE_SUPPLIERS } from './../actions/suppliers';
+import { REQUEST_SUPPLIER, RECEIVE_SUPPLIER, REQUEST_SUPPLIERS, RECEIVE_SUPPLIERS } from '../suppliers/actions';
 
 module.exports = function(state = false, action) {
   switch(action.type) {

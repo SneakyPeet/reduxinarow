@@ -1,4 +1,4 @@
-import { networkError } from './common';
+import { networkError } from '../actions/common';
 import { routes } from '../constants';
 import { push } from 'react-router-redux'
 import config from 'config';
@@ -11,6 +11,7 @@ export const RECEIVE_SUPPLIERS = 'RECEIVE_SUPPLIERS';
 export const REQUEST_SUPPLIER = 'REQUEST_SUPPLIER';
 export const RECEIVE_SUPPLIER = 'RECEIVE_SUPPLIER';
 export const VIEW_SUPPLIER = 'VIEW_SUPPLIER';
+export const EDIT_SUPPLIER = 'EDIT_SUPPLIER';
 
 function requestSuppliers() {
   return {
@@ -41,6 +42,12 @@ function receiveSupplier(json) {
 export function viewSupplier(id) {
   return dispatch => {
     dispatch(push(routes.suppliers + '/' + id));
+  }
+}
+
+export function editSupplier() {
+  return {
+    type: EDIT_SUPPLIER
   }
 }
 

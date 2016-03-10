@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
-import { fetchSupplier } from '../../actions/suppliers'
-import SupplierPageComponent from '../../components/suppliers/SupplierPageComponent'
+import { fetchSupplier, editSupplier } from '../actions'
+import SupplierPageComponent from './components/SupplierPageLayout'
 
 
 const mapStateToProps = (state, ownProps) => {
   const id = parseInt(ownProps.params.id);
   if (state.suppliers.supplier) {
     return {
-      supplier: state.suppliers.supplier
+      supplier: state.suppliers.supplier,
+      isEditing: state.suppliers.isEditing
     }
   }
 
@@ -16,10 +17,14 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const id = ownProps.params.id;
   return {
-    fetch: (id) => {
+    fetch: () => {
       dispatch(fetchSupplier(id));
+    },
+    edit: () => {
+      dispatch(editSupplier());
     }
   }
 }

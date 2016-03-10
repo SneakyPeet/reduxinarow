@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import { fetchSuppliers, viewSupplier } from '../../actions/suppliers'
+import { fetchSuppliers, viewSupplier } from '../actions'
 import { classes } from '../../constants'
 import EntityListPageComponent from '../../components/entityListPage/EntityListPageComponent'
-import SupplierRowComponent from '../../components/suppliers/SupplierRowComponent'
+import SupplierRowComponent from './components/SupplierRow'
 
 const headers = [{
     text: 'Name',

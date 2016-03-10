@@ -1,23 +1,23 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import LinkComponent from '../navigation/LinkComponent';
-import {routes} from '../../constants';
+import {routes} from '../../../constants';
 
-require('styles/suppliers/SupplierPage.less');
+require('./styles/SupplierPage.less');
 
-class SupplierPageComponent extends React.Component {
+class SupplierPageLayout extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.fetch(this.props.supplier.id);
+    this.props.fetch();
   }
 
   render() {
     const { name, city, referenceNumber, id } = this.props.supplier;
+    const { edit, isEditing } = this.props;
 
     return (
       <main className="supplier-page">
@@ -28,25 +28,25 @@ class SupplierPageComponent extends React.Component {
         <div>
           <strong>Reference Number: </strong>{referenceNumber}
         </div>
-        <LinkComponent to={routes.suppliers_update + id}>
-          <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Update</button>
-        </LinkComponent>
+        {!isEditing && <button onClick={edit} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Edit</button>}
       </main>
     );
   }
 }
 
-SupplierPageComponent.displayName = 'SuppliersSupplierPageComponent';
+SupplierPageLayout.displayName = 'SupplierPageLayout';
 
 // Uncomment properties you need
-SupplierPageComponent.propTypes = {
+SupplierPageLayout.propTypes = {
   supplier: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
     city: PropTypes.string,
     referenceNumber: PropTypes.string
-  })
+  }),
+  edit: PropTypes.func.isRequired,
+  isEditing:  PropTypes.bool.isRequired,
 };
 // SupplierPageComponent.defaultProps = {};
 
-export default SupplierPageComponent;
+export default SupplierPageLayout;
