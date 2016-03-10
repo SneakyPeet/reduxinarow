@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import configureStore from './stores';
+import { configureStore } from './stores';
 import App from './containers/App';
 import AboutPage from './components/about/AboutPageComponent';
 import IssuesPage from './containers/issues/IssuesPage';

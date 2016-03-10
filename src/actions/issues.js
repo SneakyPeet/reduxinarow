@@ -1,4 +1,5 @@
 import { getApi } from './../sources'
+import { networkError } from './common'
 
 export const REQUEST_ISSUES = 'REQUEST_ISSUES'
 export const RECEIVE_ISSUES = 'RECEIVE_ISSUES'
@@ -19,7 +20,11 @@ function receiveIssues(json) {
 export function fetchIssues() {
   return dispatch => {
     dispatch(requestIssues());
-    getApi((client) => {
+    getApi((err, client) => {
+      if(err) {
+        dispatch(networkError(err));
+        return;
+      }
       return client.Issues.Issues_Get()
         .then(req => dispatch(receiveIssues(JSON.parse(req.data))));
     });

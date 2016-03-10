@@ -7,16 +7,21 @@ function buildClient(callback) {
   new Swagger({
     url: config.swaggerSpec,
     usePromise: true
-  }).then(callback);
+  })
+  .then((client) => callback(null, client))
+  .catch((err) => callback(err));
 }
 
 function getApi(callback) {
   if (client) {
     callback(client);
   }
-  buildClient((result) => {
+  buildClient((err, result) => {
+    if(err) {
+      callback(err);
+    }
     client = result;
-    callback(client);
+    callback(null, client);
   });
 }
 

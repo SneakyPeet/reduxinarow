@@ -11,7 +11,7 @@ const logger = store => next => action => {
   return result
 }
 
-module.exports = function(initialState) {
+module.exports.configureStore = function(initialState) {
   const store = redux.createStore(
     reducers,
     initialState,
@@ -29,5 +29,5 @@ module.exports = function(initialState) {
     })
   }
 
-  return store
+  return store;
 }
