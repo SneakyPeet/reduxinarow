@@ -1,6 +1,7 @@
 const redux = require('redux');
 const reducers = require('../reducers');
 const thunkMiddleware  = require('redux-thunk');
+import { routerMiddleware } from 'react-router-redux'
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -11,11 +12,12 @@ const logger = store => next => action => {
   return result
 }
 
-module.exports.configureStore = function(initialState) {
+module.exports.configureStore = function(history, initialState) {
   const store = redux.createStore(
     reducers,
     initialState,
     redux.applyMiddleware(
+        routerMiddleware(history),
         thunkMiddleware,
         logger
       )

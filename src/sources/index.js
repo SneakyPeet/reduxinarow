@@ -23,6 +23,7 @@ function getApi(callback) {
       return;
     }
     client = result;
+    console.log(client);
     callback(null, client);
   });
 }

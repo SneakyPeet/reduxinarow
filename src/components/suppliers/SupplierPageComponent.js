@@ -7,6 +7,15 @@ import {routes} from '../../constants';
 require('styles/suppliers/SupplierPage.less');
 
 class SupplierPageComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetch(this.props.supplier.id);
+  }
+
   render() {
     const { name, city, referenceNumber, id } = this.props.supplier;
 
@@ -33,9 +42,9 @@ SupplierPageComponent.displayName = 'SuppliersSupplierPageComponent';
 SupplierPageComponent.propTypes = {
   supplier: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    referenceNumber: PropTypes.string.isRequired
+    name: PropTypes.string,
+    city: PropTypes.string,
+    referenceNumber: PropTypes.string
   })
 };
 // SupplierPageComponent.defaultProps = {};

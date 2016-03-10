@@ -11,7 +11,7 @@ import SuppliersPage from './containers/suppliers/SuppliersPage';
 import SupplierPage from './containers/suppliers/SupplierPage';
 import { routes } from './constants';
 
-const store = configureStore();
+const store = configureStore(browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

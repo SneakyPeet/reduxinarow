@@ -6,7 +6,7 @@ require('styles/entityListPage/EntityList.less');
 
 class EntityListComponent extends React.Component {
   render() {
-    const { data, headers } = this.props;
+    const { data, headers, selectedEntity } = this.props;
     const Entity = this.props.entityComponent;
     return (
       <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
@@ -16,7 +16,7 @@ class EntityListComponent extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => <Entity {...item} key={index}/>)}
+          {data.map((item, index) => <Entity {...item} key={index} select={selectedEntity} />)}
         </tbody>
       </table>
     );
@@ -32,7 +32,8 @@ EntityListComponent.propTypes = {
   headers: React.PropTypes.arrayOf(React.PropTypes.shape({
     text: PropTypes.string.isRequired,
     class: PropTypes.string.isRequired
-  }))
+  })),
+  selectedEntity: React.PropTypes.func.isRequired
 };
 // IssueListComponent.defaultProps = {};
 

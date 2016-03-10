@@ -35,9 +35,9 @@ EntityListPageComponent.displayName = 'EntityListPageComponent';
 EntityListPageComponent.propTypes = {
   fetch : PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
   entityComponent: React.PropTypes.func.isRequired,
-  headers: React.PropTypes.array.isRequired
+  headers: React.PropTypes.array.isRequired,
+  selectedEntity: React.PropTypes.func.isRequired
 };
 
 export default EntityListPageComponent;
