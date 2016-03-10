@@ -14,11 +14,13 @@ function buildClient(callback) {
 
 function getApi(callback) {
   if (client) {
-    callback(client);
+    callback(null, client);
+    return;
   }
   buildClient((err, result) => {
     if(err) {
       callback(err);
+      return;
     }
     client = result;
     callback(null, client);

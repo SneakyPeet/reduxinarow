@@ -7,13 +7,13 @@ require('styles/common/ErrorBar.less');
 
 class ErrorBarComponent extends React.Component {
   render() {
-    const {hasError, message} = this.props;
+    const {hasError, msg} = this.props;
     if (!hasError) {
       return null;
     }
     return (
       <div className="errorbar-component">
-        {message}
+        {msg}
       </div>
     );
   }
@@ -22,7 +22,7 @@ class ErrorBarComponent extends React.Component {
 ErrorBarComponent.displayName = 'ErrorErrorBarComponent';
 
 ErrorBarComponent.propTypes = {
-  message: PropTypes.string.isRequired,
+  msg: PropTypes.string,
   hasError: PropTypes.bool.isRequired
 };
 

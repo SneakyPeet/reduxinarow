@@ -26,7 +26,8 @@ export function fetchIssues() {
         return;
       }
       return client.Issues.Issues_Get()
-        .then(req => dispatch(receiveIssues(JSON.parse(req.data))));
+        .then(req => dispatch(receiveIssues(JSON.parse(req.data))))
+        .catch(err => dispatch(networkError(err)));
     });
   };
 }
