@@ -7,10 +7,7 @@ import SupplierRowComponent from './components/SupplierRow';
 import { push } from 'react-router-redux';
 
 const searchQuery = 'search';
-
-function contains(item, term) {
-  return item.name.toLowerCase().indexOf(term) > -1;
-}
+const pageQuery = 'page';
 
 const headers = [{
     text: 'Name',
@@ -24,20 +21,41 @@ const headers = [{
   }
 ]
 
-const mapStateToProps = (state) => {
+function contains(item, term) {
+  return item.name.toLowerCase().indexOf(term) > -1;
+}
+
+function filterData(state) {
   let searchTerm = state.routing.locationBeforeTransitions.query[searchQuery];
-  let data;
   if (searchTerm) {
     searchTerm = searchTerm.toLowerCase();
-    data = state.suppliers.data.filter(item => contains(item, searchTerm));
-  } else {
-    data = state.suppliers.data;
+    return state.suppliers.data.filter(item => contains(item, searchTerm));
   }
+  return state.suppliers.data;
+}
+
+function pageData(data, state) {
+  const pageSize = 10;
+  const pageTerm = state.routing.locationBeforeTransitions.query[pageQuery];
+  const page = pageTerm ? parseInt(pageTerm) : 1;
+  let pageTotal = Math.ceil(data.length / 10);
+  pageTotal = pageTotal < 1 ? 1 : pageTotal;
+  const start = (page - 1)*pageSize;
   return {
-    data,
+    data: data.slice(start, start + pageSize),
+    page,
+    pageTotal
+  };
+}
+
+const mapStateToProps = (state) => {
+  const filteredData = filterData(state);
+  const data = pageData(filteredData, state);
+
+  return Object.assign(data, {
     entityComponent: SupplierRowComponent,
     headers
-  }
+  });
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -55,6 +73,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch(push(routes.suppliers));
       }
 
+    },
+    goToPage: (page) => {
+      dispatch(push(routes.suppliers + '?' + pageQuery + '=' + page));
     }
   }
 }

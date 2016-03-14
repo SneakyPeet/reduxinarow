@@ -3,6 +3,7 @@
 import React, { PropTypes } from 'react';
 import EntityList from './EntityListComponent';
 import SearchComponent from './SearchComponent';
+import Pager from './PagerComponent';
 
 require('styles/entityListPage/EntityListPage.less');
 
@@ -22,6 +23,7 @@ class EntityListPageComponent extends React.Component {
           <div className="container-large">
             <SearchComponent handleSearch={this.props.handleSearch}/>
             {<EntityList {...this.props}/> }
+            <Pager {...this.props}/>
           </div>
         </div>
       </main>
@@ -34,6 +36,8 @@ EntityListPageComponent.displayName = 'EntityListPageComponent';
 EntityListPageComponent.propTypes = {
   fetch : PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
+  pageTotal: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
   entityComponent: PropTypes.func.isRequired,
   headers: PropTypes.array.isRequired,
   selectedEntity: PropTypes.func.isRequired,
