@@ -7,11 +7,11 @@
  *          you edit them, they are not updated again.
  */
 import { combineReducers } from 'redux';
-
 import suppliers from '../suppliers';
 /* Populated by react-webpack-redux:reducer */
 const reducers = {
   routing: require('./routing.js'),
+  form: require('./form.js'),
   error: require('./error.js'),
   issues: require('./issues.js'),
   suppliers: suppliers.reducer,

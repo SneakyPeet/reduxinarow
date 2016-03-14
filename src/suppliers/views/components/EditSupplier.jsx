@@ -2,20 +2,32 @@
 
 import React, { PropTypes } from 'react';
 
-class SupplierDetail extends React.Component {
-
+class EditSupplier extends React.Component {
   render() {
+    //const {fields: {name, city, referenceNumber}, update} = this.props;
     return (
-      <div>
-        EDIT
-      </div>
+      <form onSubmit={this.props.update}>
+        <div className="mdl-textfield mdl-js-textfield">
+          <input className="mdl-textfield__input" type="text" placeholder="Name"/>
+          <label className="mdl-textfield__label">Name</label>
+        </div>
+        <div className="mdl-textfield mdl-js-textfield">
+          <input className="mdl-textfield__input" type="text" placeholder="City"/>
+          <label className="mdl-textfield__label">City</label>
+        </div>
+        <div className="mdl-textfield mdl-js-textfield">
+          <input className="mdl-textfield__input" type="text" placeholder="Reference Number"/>
+          <label className="mdl-textfield__label">Reference Number</label>
+        </div>
+        <button type="submit">Update</button>
+      </form>
     );
   }
 }
 
-SupplierDetail.displayName = 'SupplierDetail';
+EditSupplier.displayName = 'EditSupplier';
 
-SupplierDetail.propTypes = {
+EditSupplier.propTypes = {
   supplier: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
@@ -25,4 +37,4 @@ SupplierDetail.propTypes = {
   update: PropTypes.func
 };
 
-export default SupplierDetail;
+export default EditSupplier;

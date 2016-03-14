@@ -7,7 +7,6 @@ class SupplierDetail extends React.Component {
   render() {
     const { name, city, referenceNumber} = this.props.supplier;
     const { edit } = this.props;
-    console.log(this.props);
     return (
       <div>
         <h1>{name}</h1>

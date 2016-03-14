@@ -26,7 +26,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(editSupplier(id));
     },
     update: () => {
-      //dispatch(editSupplier());
+
+    },
+    cancel: () => {
+
     }
   }
 }

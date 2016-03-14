@@ -56,7 +56,7 @@ export function fetchSuppliers() {
     dispatch(requestSuppliers());
     return request.get(api)
       .then(req => dispatch(receiveSuppliers(req.data)))
-      .catch(err => dispatch(networkError(err)));
+      .catch(err => dispatch(networkError(err.toString())));
   };
 }
 
@@ -65,6 +65,6 @@ export function fetchSupplier(id) {
     dispatch(requestSupplier(id));
     return request.get(api, {params: { id }})
       .then(req => dispatch(receiveSupplier(req.data)))
-      .catch(err => dispatch(networkError(err)));
+      .catch(err => dispatch(networkError(err.toString())));
   };
 }
