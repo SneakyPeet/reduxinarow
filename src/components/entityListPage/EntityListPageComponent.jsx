@@ -50,7 +50,8 @@ EntityListPageComponent.propTypes = {
   headers: PropTypes.array.isRequired,
   selectedEntity: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
-  create: PropTypes.func.isRequired
+  create: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired
 };
 
 export default EntityListPageComponent;

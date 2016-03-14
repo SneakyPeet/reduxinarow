@@ -87,3 +87,19 @@ export function createSupplier(supplier) {
       .catch(err => console.log(err));
   };
 }
+
+export function deleteSupplier(id) {
+  return dispatch => {
+    return request.delete(api + '/' + id)
+      .then(req => dispatch(supplierDeleted(id)))
+      .catch(err => console.log(err));
+  };
+}
+
+export const SUPPLIER_DELETED = 'SUPPLIER_DELETED';
+function supplierDeleted(id) {
+  return {
+    type: SUPPLIER_DELETED,
+    id
+  }
+}

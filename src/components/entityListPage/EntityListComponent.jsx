@@ -13,10 +13,11 @@ class EntityListComponent extends React.Component {
         <thead>
           <tr>
             {headers.map((head, index) => <th className={head.class} key={'h' + index}>{head.text}</th>)}
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => <Entity {...item} key={index} select={selectedEntity} />)}
+          {data.map((item, index) => <Entity {...item} key={index} select={selectedEntity} delete={this.props.delete} />)}
         </tbody>
       </table>
     );
@@ -33,7 +34,8 @@ EntityListComponent.propTypes = {
     text: PropTypes.string.isRequired,
     class: PropTypes.string.isRequired
   })),
-  selectedEntity: React.PropTypes.func.isRequired
+  selectedEntity: React.PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired
 };
 // IssueListComponent.defaultProps = {};
 

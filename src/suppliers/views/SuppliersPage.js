@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchSuppliers, viewSupplier, filterSuppliers } from '../actions';
+import { fetchSuppliers, viewSupplier, filterSuppliers, deleteSupplier } from '../actions';
 import { routes } from '../../constants';
 import form from '../../forms';
 import { classes } from '../../constants';
@@ -102,6 +102,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     create: () => {
       dispatch(form.init({id:0, name: '', city: '', referenceNumber: ''}));
       dispatch(push(routes.suppliers + '/create'));
+    },
+    delete: (id) => {
+      dispatch(deleteSupplier(id));
     }
   }
 }
