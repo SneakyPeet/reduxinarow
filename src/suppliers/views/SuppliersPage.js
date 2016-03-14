@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchSuppliers, viewSupplier, filterSuppliers } from '../actions';
 import { routes } from '../../constants';
+import form from '../../forms';
 import { classes } from '../../constants';
 import EntityListPageComponent from '../../components/entityListPage/EntityListPageComponent';
 import SupplierRowComponent from './components/SupplierRow';
@@ -97,6 +98,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     goToPage: (page) => {
       const query = ownProps.location.query;
       dispatch(push(routes.suppliers + getPageQuery(query.search, page)));
+    },
+    create: () => {
+      dispatch(form.init({id:0, name: '', city: '', referenceNumber: ''}));
+      dispatch(push(routes.suppliers + '/create'));
     }
   }
 }

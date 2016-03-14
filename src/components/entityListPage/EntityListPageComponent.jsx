@@ -17,13 +17,21 @@ class EntityListPageComponent extends React.Component {
   }
 
   render() {
+    const canCreate = !!this.props.create;
     return (
       <main className="mdl-layout__content">
         <div className="page-content">
           <div className="container-large">
             <SearchComponent handleSearch={this.props.handleSearch}/>
-            {<EntityList {...this.props}/> }
+            <div className="clear-fix"></div>
+            <EntityList {...this.props}/>
             <Pager {...this.props}/>
+            <div className="clear-fix"></div>
+            <div className="mdl-grid">
+              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.props.create}>
+                Create
+              </button>
+            </div>
           </div>
         </div>
       </main>
@@ -41,7 +49,8 @@ EntityListPageComponent.propTypes = {
   entityComponent: PropTypes.func.isRequired,
   headers: PropTypes.array.isRequired,
   selectedEntity: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired
+  handleSearch: PropTypes.func.isRequired,
+  create: PropTypes.func.isRequired
 };
 
 export default EntityListPageComponent;

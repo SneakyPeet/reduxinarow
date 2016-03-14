@@ -11,7 +11,9 @@ class SupplierPageLayout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetch();
+    if (this.props.supplier.id) {
+      this.props.fetch();
+    }
   }
 
   render() {

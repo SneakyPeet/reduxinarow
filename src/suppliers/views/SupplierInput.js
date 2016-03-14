@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import form from '../../forms'
 import EditSupplier from './components/EditSupplier'
-import { saveSupplier } from '../actions'
+import { saveSupplier, createSupplier } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -18,6 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     submit: (input, isEditing) => {
       if (isEditing) {
         dispatch(saveSupplier(input));
+      } else {
+        dispatch(createSupplier(input));
       }
     },
     cancel: () => {

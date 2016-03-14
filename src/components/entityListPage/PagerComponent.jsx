@@ -16,24 +16,23 @@ class PagerComponent extends React.Component {
 
   render() {
     const { pageTotal, page } = this.props;
+    const shouldShow = pageTotal > 1;
+    const showFirst = (page > 1) && shouldShow;
+    const showLast = (page < pageTotal) && shouldShow;
     return (
-      <div className="mdl-cell mdl-cell--6-col">
-        { pageTotal > 1 &&
-          <div className="pull-right">
-            { page > 1 &&
+        <div className="pull-right">
+            { showFirst &&
               <button className="mdl-button mdl-js-button mdl-button--icon" onClick={this.goToPage(page - 1)}>
                 <i className="material-icons">navigate_before</i>
               </button>
             }
-            {page}/{pageTotal}
-            { page < pageTotal &&
+            {shouldShow && (page + '/' + pageTotal)}
+            { showLast &&
               <button className="mdl-button mdl-js-button mdl-button--icon" onClick={this.goToPage(page + 1)}>
                 <i className="material-icons">navigate_next</i>
               </button>
             }
           </div>
-        }
-      </div>
     );
   }
 }

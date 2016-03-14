@@ -21,6 +21,8 @@ function configureRoutes() {
   return (
     <Route path={routes.suppliers} component={Suppliers}>
       <IndexRoute component={SuppliersPage} />
+      <Route path='create' component={SupplierInput}>
+      </Route>
       <Route path=':id' component={SupplierPage} >
         <IndexRoute component={SupplierDetail} />
         <Route path='update' component={SupplierInput} />

@@ -73,9 +73,16 @@ export function fetchSupplier(id) {
 }
 
 export function saveSupplier(supplier) {
-  console.log(supplier);
   return dispatch => {
     return request.put(api + '/' + supplier.id, supplier)
+      .then(req => dispatch(push(routes.suppliers + '/' + req.id)))
+      .catch(err => console.log(err));
+  };
+}
+
+export function createSupplier(supplier) {
+  return dispatch => {
+    return request.post(api, supplier)
       .then(req => dispatch(push(routes.suppliers + '/' + req.id)))
       .catch(err => console.log(err));
   };

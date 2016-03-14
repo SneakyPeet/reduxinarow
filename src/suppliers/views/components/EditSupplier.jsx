@@ -50,7 +50,7 @@ EditSupplier.displayName = 'EditSupplier';
 
 EditSupplier.propTypes = {
   input: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     name: PropTypes.string,
     city: PropTypes.string,
     referenceNumber: PropTypes.string
