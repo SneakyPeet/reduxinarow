@@ -2,24 +2,45 @@
 
 import React, { PropTypes } from 'react';
 
+function validate(supplier) {
+  supplier
+}
+
 class EditSupplier extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onUpdate = this.onUpdate.bind(this);
+  }
+
+  onUpdate(e) {
+    e.preventDefault();
+    this.props.updateField(e.target.id, e.target.value);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const {submit, isEditing, input} = this.props
+    submit(input, isEditing);
+  }
+
   render() {
-    //const {fields: {name, city, referenceNumber}, update} = this.props;
+    const {id, name, city, referenceNumber} = this.props.input;
     return (
-      <form onSubmit={this.props.update}>
+      <form onSubmit={this.onSubmit.bind(this)}>
+        <input id="id" value={id} onChange={this.onUpdate} hidden/>
         <div className="mdl-textfield mdl-js-textfield">
-          <input className="mdl-textfield__input" type="text" placeholder="Name"/>
+          <input className="mdl-textfield__input" type="text" placeholder="Name" id="name" value={name} onChange={this.onUpdate}/>
           <label className="mdl-textfield__label">Name</label>
         </div>
         <div className="mdl-textfield mdl-js-textfield">
-          <input className="mdl-textfield__input" type="text" placeholder="City"/>
+          <input className="mdl-textfield__input" type="text" placeholder="City" id="city" value={city} onChange={this.onUpdate}/>
           <label className="mdl-textfield__label">City</label>
         </div>
         <div className="mdl-textfield mdl-js-textfield">
-          <input className="mdl-textfield__input" type="text" placeholder="Reference Number"/>
+          <input className="mdl-textfield__input" type="text" placeholder="Reference Number" id="referenceNumber" value={referenceNumber} onChange={this.onUpdate}/>
           <label className="mdl-textfield__label">Reference Number</label>
         </div>
-        <button type="submit">Update</button>
+        <button type="submit">{ this.props.isEditing ? "Save" : "Create" }</button>
       </form>
     );
   }
@@ -28,13 +49,15 @@ class EditSupplier extends React.Component {
 EditSupplier.displayName = 'EditSupplier';
 
 EditSupplier.propTypes = {
-  supplier: PropTypes.shape({
+  input: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
     city: PropTypes.string,
     referenceNumber: PropTypes.string
   }),
-  update: PropTypes.func
+  updateField: PropTypes.func,
+  submit: PropTypes.func,
+  isEditing: PropTypes.bool
 };
 
 export default EditSupplier;

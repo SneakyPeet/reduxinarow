@@ -59,7 +59,7 @@ function getPageQuery(searchTerm, page) {
   }
 
   const q = [];
-  for(var p in newQuery) {
+  for(let p in newQuery) {
     if (newQuery.hasOwnProperty(p)) {
       q.push(encodeURIComponent(p) + '=' + encodeURIComponent(newQuery[p]));
     }

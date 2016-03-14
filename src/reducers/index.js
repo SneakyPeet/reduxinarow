@@ -8,10 +8,12 @@
  */
 import { combineReducers } from 'redux';
 import suppliers from '../suppliers';
+import form from '../forms';
+console.log(form);
 /* Populated by react-webpack-redux:reducer */
 const reducers = {
   routing: require('./routing.js'),
-  form: require('./form.js'),
+  form: form.reducer,
   error: require('./error.js'),
   issues: require('./issues.js'),
   suppliers: suppliers.reducer,

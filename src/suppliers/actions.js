@@ -1,5 +1,6 @@
 import { networkError } from '../actions/common';
 import { routes } from '../constants';
+import form from '../forms';
 import { push } from 'react-router-redux'
 import config from 'config';
 import request from 'axios';
@@ -63,7 +64,19 @@ export function fetchSupplier(id) {
   return dispatch => {
     dispatch(requestSupplier(id));
     return request.get(api, {params: { id }})
-      .then(req => dispatch(receiveSupplier(req.data)))
+      .then(req => {
+        dispatch(form.init(req.data))
+        dispatch(receiveSupplier(req.data))
+      })
       .catch(err => dispatch(networkError(err.toString())));
+  };
+}
+
+export function saveSupplier(supplier) {
+  console.log(supplier);
+  return dispatch => {
+    return request.put(api + '/' + supplier.id, supplier)
+      .then(req => dispatch(push(routes.suppliers + '/' + req.id)))
+      .catch(err => console.log(err));
   };
 }

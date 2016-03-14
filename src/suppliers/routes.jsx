@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router'
 import SuppliersPage from './views/SuppliersPage';
 import SupplierPage from './views/SupplierPage';
 import SupplierDetail from './views/components/SupplierDetail';
-import EditSupplier from './views/components/EditSupplier';
+import SupplierInput from './views/SupplierInput';
 import { routes } from '../constants';
 
 class Suppliers extends React.Component {
@@ -23,7 +23,7 @@ function configureRoutes() {
       <IndexRoute component={SuppliersPage} />
       <Route path=':id' component={SupplierPage} >
         <IndexRoute component={SupplierDetail} />
-        <Route path='update' component={EditSupplier} />
+        <Route path='update' component={SupplierInput} />
       </Route>
     </Route>
   );

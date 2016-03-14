@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchSupplier, editSupplier } from '../actions'
+import form from '../../forms'
 import SupplierPageLayout from './components/SupplierPageLayout'
 
 
@@ -24,12 +25,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     edit: () => {
       dispatch(editSupplier(id));
-    },
-    update: () => {
-
-    },
-    cancel: () => {
-
     }
   }
 }

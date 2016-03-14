@@ -23,7 +23,6 @@ module.exports = function(state = initialState, action) {
         data: action.suppliers
       })
 
-    case EDIT_SUPPLIER:
     case REQUEST_SUPPLIERS:
     default: {
       return state;
