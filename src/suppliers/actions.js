@@ -7,18 +7,13 @@ import request from 'axios';
 const api = config.apiUrl + 'suppliers';
 
 export const REQUEST_SUPPLIERS = 'REQUEST_SUPPLIERS';
-export const RECEIVE_SUPPLIERS = 'RECEIVE_SUPPLIERS';
-export const REQUEST_SUPPLIER = 'REQUEST_SUPPLIER';
-export const RECEIVE_SUPPLIER = 'RECEIVE_SUPPLIER';
-export const VIEW_SUPPLIER = 'VIEW_SUPPLIER';
-export const EDIT_SUPPLIER = 'EDIT_SUPPLIER';
-
 function requestSuppliers() {
   return {
     type: REQUEST_SUPPLIERS
   }
 }
 
+export const RECEIVE_SUPPLIERS = 'RECEIVE_SUPPLIERS';
 function receiveSuppliers(json) {
   return {
     type: RECEIVE_SUPPLIERS,
@@ -26,12 +21,14 @@ function receiveSuppliers(json) {
   }
 }
 
+export const REQUEST_SUPPLIER = 'REQUEST_SUPPLIER';
 function requestSupplier() {
   return {
     type: REQUEST_SUPPLIER
   }
 }
 
+export const RECEIVE_SUPPLIER = 'RECEIVE_SUPPLIER';
 function receiveSupplier(json) {
   return {
     type: RECEIVE_SUPPLIER,
@@ -39,12 +36,14 @@ function receiveSupplier(json) {
   }
 }
 
+export const VIEW_SUPPLIER = 'VIEW_SUPPLIER';
 export function viewSupplier(id) {
   return dispatch => {
     dispatch(push(routes.suppliers + '/' + id));
   }
 }
 
+export const EDIT_SUPPLIER = 'EDIT_SUPPLIER';
 export function editSupplier(id) {
   return dispatch => {
     dispatch(push(routes.suppliers + '/' + id + '/update'));

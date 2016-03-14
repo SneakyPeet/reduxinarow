@@ -20,7 +20,7 @@ class EntityListPageComponent extends React.Component {
       <main className="mdl-layout__content">
         <div className="page-content">
           <div className="container-large">
-            <SearchComponent />
+            <SearchComponent handleSearch={this.props.handleSearch}/>
             {<EntityList {...this.props}/> }
           </div>
         </div>
@@ -34,9 +34,10 @@ EntityListPageComponent.displayName = 'EntityListPageComponent';
 EntityListPageComponent.propTypes = {
   fetch : PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  entityComponent: React.PropTypes.func.isRequired,
-  headers: React.PropTypes.array.isRequired,
-  selectedEntity: React.PropTypes.func.isRequired
+  entityComponent: PropTypes.func.isRequired,
+  headers: PropTypes.array.isRequired,
+  selectedEntity: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired
 };
 
 export default EntityListPageComponent;
