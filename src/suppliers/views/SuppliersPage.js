@@ -37,15 +37,34 @@ function filterData(state) {
 function pageData(data, state) {
   const pageSize = 10;
   const pageTerm = state.routing.locationBeforeTransitions.query[pageQuery];
-  const page = pageTerm ? parseInt(pageTerm) : 1;
   let pageTotal = Math.ceil(data.length / 10);
   pageTotal = pageTotal < 1 ? 1 : pageTotal;
+  let page = pageTerm ? parseInt(pageTerm) : 1;
+  page = page > pageTotal ? pageTotal : page;
   const start = (page - 1)*pageSize;
   return {
     data: data.slice(start, start + pageSize),
     page,
     pageTotal
   };
+}
+
+function getPageQuery(searchTerm, page) {
+  const newQuery = {}
+  if (searchTerm) {
+    newQuery[searchQuery] = searchTerm;
+  }
+  if (page) {
+    newQuery[pageQuery] = page;
+  }
+
+  const q = [];
+  for(var p in newQuery) {
+    if (newQuery.hasOwnProperty(p)) {
+      q.push(encodeURIComponent(p) + '=' + encodeURIComponent(newQuery[p]));
+    }
+  }
+  return '?' + q.join('&');
 }
 
 const mapStateToProps = (state) => {
@@ -67,15 +86,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(viewSupplier(id));
     },
     handleSearch: (term) => {
+      const query = ownProps.location.query;
       if (term) {
-        dispatch(push(routes.suppliers + '?' + searchQuery + '=' + term));
+        dispatch(push(routes.suppliers + getPageQuery(term, query.page)));
       } else {
-        dispatch(push(routes.suppliers));
+        dispatch(push(routes.suppliers + getPageQuery(null, query.page)));
       }
 
     },
     goToPage: (page) => {
-      dispatch(push(routes.suppliers + '?' + pageQuery + '=' + page));
+      const query = ownProps.location.query;
+      dispatch(push(routes.suppliers + getPageQuery(query.search, page)));
     }
   }
 }
